@@ -1,7 +1,9 @@
 ﻿# Group
+Dongqi Huang (Email merrickdong@gmail.com)
 
-ziranren5@gmail.com
+Owen Estevez (Email esteve00202@gmail.com)
 
+Ziran Ren (Email ziranren5@gmail.com)
 
 
 # Description of project 
