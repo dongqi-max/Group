@@ -7,14 +7,14 @@ Ziran Ren (Email ziranren5@gmail.com)
 
 
 # Description of project 
-
-Ideas:
+- Student assignment planner
+   - Students can add assignments, edit assignments, add due dates, mark complete/incomplete, and sort by course, time estimate of how long the assignment will take
+   - Assignments will then be organized into a scheduler, with an assignment each day to complete before its due date
+  
+Other Ideas:
 - A supermarket inventory management system
     - Function: add product, view product list, delete product, and update quantity
 - Student Expense tracker/budget
-  
-- Student assignment planner
-   - Students can add assignments, edit assignments, add due dates, mark complete/incomplete, and sort by course 
 - Study session organizer?
     - Students can create study sessions(time/place), others can request to join the session 
 
