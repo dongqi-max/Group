@@ -7,7 +7,7 @@ Ziran Ren (Email ziranren5@gmail.com)
 
 
 # Description of project 
-**Student assignment planner**
+**Student assignment planner/scheduler**
    - **Students can add assignments, edit assignments, add due dates, mark complete/incomplete, and sort by course, time estimate of how long the assignment will take**
    - **Assignments will then be organized into a scheduler, with assignment(s) each day to complete prior to their due date**
   
