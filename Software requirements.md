@@ -1,7 +1,6 @@
 # Software requirements
 
 
-Stakeholder Requirements
 (SR-01) As a student, I want to organize my assignments so that I can manage my schoolwork better. <br/>
 (SR-02) As a student, I want to see assignment deadlines so that I can avoid missing due dates. <br/>
 (SR-03) As a student, I want reminders so that I can remember upcoming assignments.  <br/>
