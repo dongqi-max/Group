@@ -1,4 +1,4 @@
-# Software requirements
+# Software Requirements
 
 
 (SR-01) As a student, I want to organize my assignments so that I can manage my schoolwork better. <br/>
