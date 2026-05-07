@@ -11,7 +11,7 @@
 <br/>
 (SR-05) As a student, I want to earn points or achievements so that I feel motivated to complete assignments.  <br/>
 <br/>
-(SR-06)As a student, I want the system to be simple and not distracting so that I will actually use it.  <br/>
+(SR-06) As a student, I want the system to be simple and not distracting so that I will actually use it.  <br/>
 <br/>
 
 # Functional Requirements
