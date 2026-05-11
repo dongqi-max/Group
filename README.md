@@ -11,11 +11,29 @@ Ziran Ren (Email ziranren5@gmail.com)
    - **Students can add assignments, edit assignments, add due dates, mark complete/incomplete, and sort by course, time estimate of how long the assignment will take**
    - **Assignments will then be organized into a scheduler, with assignment(s) each day to complete prior to their due date**
 
+Features
+- Add assignments
+- Edit assignments
+- Delete assignments
+- Set deadlines
+- Mark assignments as completed
+- View completed and unfinished assignments
+- Reminder notifications
+- Reward points and achievement system
+
 Technologies Used
 - Eclipse
 - Java
 - MySQL
 - Apache Tomcat
+
+System Requirements
+- Java JDK
+- Apache Tomcat
+- MySQL Workbench
+- Eclipse
+
+
 
 Other Ideas:
 - A supermarket inventory management system
