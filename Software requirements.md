@@ -15,4 +15,12 @@
 <br/>
 
 # Functional Requirements
-
+- The system shall allow users to add a new assignment.
+- The system shall allow users to enter assignment title, course name, due date, priority, and description.
+- The system shall display all assignments in a list.
+- The system shall allow users to mark assignments as completed.
+- The system shall sort assignments by due date or priority.
+- The system shall give users points after completing an assignment.
+- The system shall display the user’s total points.
+- The system shall allow users to delete or edit assignments.
+- The system shall send or display reminders for upcoming assignment deadlines.
