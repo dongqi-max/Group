@@ -1,17 +1,22 @@
 # Software Requirements
 
-
-(SR-01) As a student, I want to organize my assignments so that I can manage my schoolwork better. <br/>
+(SR-01) As a student, I want to quickly add assignments so that I can capture tasks without wasting time. <br/>
 <br/>
-(SR-02) As a student, I want to see assignment deadlines so that I can avoid missing due dates. <br/>
+(SR-02) As a student, I want to organize my assignments in a simple checklist so that I can easily track what is done and what is not. <br/>
 <br/>
-(SR-03) As a student, I want reminders so that I can remember upcoming assignments.  <br/>
+(SR-03) As a student, I want reminders for assignment deadlines so that I don’t forget to complete them on time. <br/>
 <br/>
-(SR-04) As a student, I want to check off completed assignments so that I can track my progress.  <br/>
+(SR-04) As a student, I want reminders so that I can remember upcoming assignments.  <br/>
 <br/>
-(SR-05) As a student, I want to earn points or achievements so that I feel motivated to complete assignments.  <br/>
+(SR-05) As a student, I want to mark assignments as completed so that I can clearly see my progress <br/>
 <br/>
-(SR-06) As a student, I want the system to be simple and not distracting so that I will actually use it.  <br/>
+(SR-06) As a student, I want a reward or points system for completing assignments so that I feel motivated to finish my work.  <br/>
+<br/>
+(SR-07) As a student, I want to redeem rewards or benefits from earned points so that staying productive feels worthwhile. <br/>
+<br/>
+(SR-08) As a student, I want the system to be simple and not distracting so that I will actually use it.  <br/>
+<br/>
+(SR-09) As a student, I want to add notes to each assignment so that I can keep all relevant information together. <br/>
 <br/>
 
 # Functional Requirements
