@@ -6,18 +6,19 @@
 <br/>
 (SR-03) As a student, I want reminders for assignment deadlines so that I don’t forget to complete them on time. <br/>
 <br/>
-(SR-04) As a student, I want reminders so that I can remember upcoming assignments.  <br/>
+(SR-04) As a student, I want to mark assignments as completed so that I can clearly see my progress <br/>
 <br/>
-(SR-05) As a student, I want to mark assignments as completed so that I can clearly see my progress <br/>
+(SR-05) As a student, I want a reward or points system for completing assignments so that I feel motivated to finish my work.  <br/>
 <br/>
-(SR-06) As a student, I want a reward or points system for completing assignments so that I feel motivated to finish my work.  <br/>
+(SR-06) As a student, I want to redeem rewards or benefits from earned points so that staying productive feels worthwhile. <br/>
 <br/>
-(SR-07) As a student, I want to redeem rewards or benefits from earned points so that staying productive feels worthwhile. <br/>
+(SR-07) As a student, I want the system to be simple and not distracting so that I will actually use it.  <br/>
 <br/>
-(SR-08) As a student, I want the system to be simple and not distracting so that I will actually use it.  <br/>
+(SR-08) As a student, I want to be able to add notes to each assignment so that I can keep all relevant information together. <br/>
 <br/>
-(SR-09) As a student, I want to add notes to each assignment so that I can keep all relevant information together. <br/>
+(SR-09) As a student, I want to view completed vs incomplete assignments separately so that I can focus on pending work. <br/>
 <br/>
+(SR-10) As a student, I want to prioritize assignments based on urgency and difficulty.
 
 # Software Functional Requirements
 
@@ -29,13 +30,17 @@
 <br/>
 (SF-04) When an assignment is added, the system shall allow users to mark assignments as completed. <br/>
 <br/>
-(SF-05) When an assignment is added, the system shall allow users to delete or edit assignments.  <br/>
+(SF-05) When assignments are marked as complete, the system shall categorize assignments into completed and incomplete lists <br/>
 <br/>
-(SF-06) When assignments are added, the system shall sort assignments by due date or priority.  <br/>
+(SF-06) When an assignment is added, the system shall allow users to delete or edit assignments.  <br/>
 <br/>
-(SF-07) When an assignment is marked as complete, the system shall give users points/credits.  <br/>
+(SF-07) When assignments are added, the system shall sort assignments by due date or priority.  <br/>
 <br/>
-(SF-08) The system shall display the user’s total points.  <br/>
+(SF-08) When an assignment is marked as complete, the system shall give users points/credits.  <br/>
 <br/>
-(SF-09) When an assignment is added, the system shall send or display reminders for upcoming assignment deadlines.  <br/>
- <br/>
+(SF-09) When an assignment is past due, the system shall remove points/credits. <br/>
+<br/>
+(SF-10) The system shall display the user’s total points.  <br/>
+<br/>
+(SF-11) When an assignment is added, the system shall send or display reminders for upcoming assignment deadlines.  <br/>
+<br/>
