@@ -1,7 +1,7 @@
 User stories - Student assignment tracker
 - As a student, I want to add assignments with deadlines so that I can organize my schoolwork in one place.
 - As a student, I want to see all upcoming assignments so that I can manage my time better.
-- As a student, I want to edit or delete assignments so that I can keep my task list up to date.
+- As a student, I want to edit or delete assignments so that I can keep my task list up to date. 
 - As a student, I want all my assignments in one place so that I don’t have to check multiple apps.
 - As a student, I want to mark assignments as completed so that I can track my progress.
 - As a student, I want a separate section for completed and incomplete assignments so that my workload is easier to manage.
