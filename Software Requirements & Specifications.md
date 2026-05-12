@@ -18,7 +18,7 @@
 <br/>
 (SR-09) As a student, I want to view completed vs incomplete assignments separately so that I can focus on pending work. <br/>
 <br/>
-(SR-10) As a student, I want to prioritize assignments based on urgency and difficulty.
+(SR-10) As a student, I want to prioritize assignments based on urgency and priority.
 
 # Software Functional Requirements
 
@@ -26,21 +26,22 @@
 <br/>
 (SF-02) When the "add assignment" button is pressed, the system shall allow users to enter the assignment title, course name, due date, priority, and description/notes. <br/>
 <br/>
-(SF-03) When an assignment is added, the system shall display all assignments in a list. <br/>
+(SF-03) When an assignment is added, the system shall display all assignments in an incomplete list. <br/>
 <br/>
-(SF-04) When an assignment is added, the system shall allow users to mark assignments as completed. <br/>
+(SF-04) When an assignment is selected, the system shall allow users to mark assignments as completed. <br/>
 <br/>
-(SF-05) When assignments are marked as complete, the system shall categorize assignments into completed and incomplete lists <br/>
+(SF-05) When assignments are marked as complete, the system shall move them to the completed list. <br/>
 <br/>
-(SF-06) When an assignment is added, the system shall allow users to delete or edit assignments.  <br/>
+(SF-06) When an assignment is selected, the system shall allow users to delete or edit assignments.  <br/>
 <br/>
 (SF-07) When assignments are added, the system shall sort assignments by due date or priority.  <br/>
 <br/>
 (SF-08) When an assignment is marked as complete, the system shall give users points/credits.  <br/>
 <br/>
-(SF-09) When an assignment is past due, the system shall remove points/credits. <br/>
+(SF-09) When an assignment is past due, the system shall remove points/credits once. <br/>
 <br/>
 (SF-10) When the application runs, the system shall display the user’s total points.  <br/>
 <br/>
-(SF-11) When an assignment is added, the system shall send or display reminders for upcoming assignment deadlines.  <br/>
+(SF-11) When an assignment is added, the system shall notify users before the assignment due date.  <br/>
 <br/>
+(SF-12) When an assignment is selected, the system shall allow the user to view the assignment title, course name, due date, and description/notes. 
