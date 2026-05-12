@@ -35,7 +35,7 @@ System Requirements
 
 
 
-Other Ideas:
+Other Explored Ideas:
 - A supermarket inventory management system
     - Function: add product, view product list, delete product, and update quantity
 - Student expense tracker
