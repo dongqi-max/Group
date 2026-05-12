@@ -55,7 +55,7 @@
 
 (AR-03) The application layer shall use Java Servlets running on Apache Tomcat to process user requests and business logic.
 
-(AR-04) The backend MYSQL database shall store assignment information, deadlines, completion status, notes, and reward points.
+(AR-04) The backend MYSQL database shall store assignment information, deadlines, completion status, notes, priority, and reward points.
 
 (AR-05) The application shall allow configurations for MYSQL connection using local or remote database credentials.
 
@@ -71,4 +71,10 @@
 
 (AR-11) The system shall support reward point calculations after assignment completion.
 
-(AR-12) The system architecture shall allow future expansion such as mobile support, email notifications, and calendar integration.
+(AR-12) The system shall support assignment status tracking including not started, in progress, and completed states.
+
+(AR-13) The system shall support assignment sorting by due date and priority.
+
+(AR-14) The system shall support notification and reminder functionality for upcoming deadlines.
+
+(AR-15) The system architecture shall allow future expansion such as mobile support, email notifications, and calendar integration.
