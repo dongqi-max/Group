@@ -19,13 +19,23 @@
 (SR-09) As a student, I want to add notes to each assignment so that I can keep all relevant information together. <br/>
 <br/>
 
-# Functional Requirements
-- The system shall allow users to add a new assignment.
-- The system shall allow users to enter assignment title, course name, due date, priority, and description.
-- The system shall display all assignments in a list.
-- The system shall allow users to mark assignments as completed.
-- The system shall sort assignments by due date or priority.
-- The system shall give users points after completing an assignment.
-- The system shall display the user’s total points.
-- The system shall allow users to delete or edit assignments.
-- The system shall send or display reminders for upcoming assignment deadlines.
+# Software Functional Requirements
+
+(SF-01) When the application runs, the system shall allow users to add a new assignment. <br/>
+<br/>
+(SF-02) When the "add assignment" button is pressed, the system shall allow users to enter the assignment title, course name, due date, priority, and description/notes. <br/>
+<br/>
+(SF-03) When an assignment is added, the system shall display all assignments in a list. <br/>
+<br/>
+(SF-04) When an assignment is added, the system shall allow users to mark assignments as completed. <br/>
+<br/>
+(SF-05) When an assignment is added, the system shall allow users to delete or edit assignments.  <br/>
+<br/>
+(SF-06) When assignments are added, the system shall sort assignments by due date or priority.  <br/>
+<br/>
+(SF-07) When an assignment is marked as complete, the system shall give users points/credits.  <br/>
+<br/>
+(SF-08) The system shall display the user’s total points.  <br/>
+<br/>
+(SF-09) When an assignment is added, the system shall send or display reminders for upcoming assignment deadlines.  <br/>
+ <br/>
