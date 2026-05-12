@@ -18,13 +18,13 @@
 <br/>
 (SR-09) As a student, I want to view completed vs incomplete assignments separately so that I can focus on pending work. <br/>
 <br/>
-(SR-10) As a student, I want to prioritize assignments based on due date and priority.
+(SR-10) As a student, I want to prioritize assignments based on due date and priority(low/medium/high).
 
 # Software Functional Requirements
 
 (SF-01) When the application runs, the system shall allow users to add a new assignment. <br/>
 <br/>
-(SF-02) When the "add assignment" button is pressed, the system shall allow users to enter the assignment title, course name, due date, priority, and description/notes. <br/>
+(SF-02) When the "add assignment" button is pressed, the system shall allow users to enter the assignment title, course name, due date, priority(low/medium/high), and description/notes. <br/>
 <br/>
 (SF-03) When an assignment is added, the system shall display all assignments in an incomplete list. <br/>
 <br/>
@@ -34,7 +34,7 @@
 <br/>
 (SF-06) When an assignment is selected, the system shall allow users to delete or edit assignments.  <br/>
 <br/>
-(SF-07) When assignments are added, the system shall sort assignments by due date or priority.  <br/>
+(SF-07) When assignments are added, the system shall sort assignments by due date or priority(low/medium/high).  <br/>
 <br/>
 (SF-08) When an assignment is marked as complete, the system shall give users points/credits.  <br/>
 <br/>
