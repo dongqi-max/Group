@@ -19,7 +19,7 @@
 (SR-09) As a student, I want to view completed vs incomplete assignments separately so that I can focus on pending work. <br/>
 <br/>
 (SR-10) As a student, I want to prioritize assignments based on due date and priority(low/medium/high).
-
+ 
 # Software Functional Requirements
 
 (SF-01) When the application runs, the system shall allow users to add a new assignment. <br/>
