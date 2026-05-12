@@ -6,7 +6,7 @@
 <br/>
 (SR-03) As a student, I want reminders for assignment deadlines so that I don’t forget to complete them on time. <br/>
 <br/>
-(SR-04) As a student, I want to mark assignments as completed so that I can clearly see my progress <br/>
+(SR-04) As a student, I want to mark assignments as completed so that I can clearly see my progress. <br/>
 <br/>
 (SR-05) As a student, I want a reward or points system for completing assignments so that I feel motivated to finish my work.  <br/>
 <br/>
@@ -18,7 +18,7 @@
 <br/>
 (SR-09) As a student, I want to view completed vs incomplete assignments separately so that I can focus on pending work. <br/>
 <br/>
-(SR-10) As a student, I want to prioritize assignments based on urgency and priority.
+(SR-10) As a student, I want to prioritize assignments based on due date and priority.
 
 # Software Functional Requirements
 
@@ -30,7 +30,7 @@
 <br/>
 (SF-04) When an assignment is selected, the system shall allow users to mark assignments as completed. <br/>
 <br/>
-(SF-05) When assignments are marked as complete, the system shall move them to the completed list. <br/>
+(SF-05) When an assignment is marked as complete, the system shall move it to the completed list. <br/>
 <br/>
 (SF-06) When an assignment is selected, the system shall allow users to delete or edit assignments.  <br/>
 <br/>
@@ -38,7 +38,7 @@
 <br/>
 (SF-08) When an assignment is marked as complete, the system shall give users points/credits.  <br/>
 <br/>
-(SF-09) When an assignment is past due, the system shall remove points/credits once. <br/>
+(SF-09) When an assignment is past due, the system shall remove points/credits once per assignment. <br/>
 <br/>
 (SF-10) When the application runs, the system shall display the user’s total points.  <br/>
 <br/>
