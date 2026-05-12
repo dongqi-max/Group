@@ -12,12 +12,11 @@ Ziran Ren (Email ziranren5@gmail.com)
    - **Assignments will then be organized into a scheduler, with assignment(s) each day to complete prior to their due date**
 
 Features
-- Add assignments
+- Add/Delete assignments
 - Edit assignments
-- Delete assignments
-- Set deadlines
+- Set due dates
 - Mark assignments as completed
-- View completed and unfinished assignments
+- View completed and unfinished assignments in separate lists
 - Reminder notifications
 - Reward points and achievement system
 
