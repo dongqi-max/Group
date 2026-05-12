@@ -45,3 +45,30 @@
 (SF-11) When an assignment is added, the system shall notify users before the assignment due date.  <br/>
 <br/>
 (SF-12) When an assignment is selected, the system shall allow the user to view the assignment title, course name, due date, and description/notes. 
+
+
+# Architecture Requirements
+
+(AR-01) The system shall use a three-tier architecture consisting of presentation layer, application layer, and database layer.
+
+(AR-02) The presentation layer shall use JSP, HTML, and CSS to provide the user interface.
+
+(AR-03) The application layer shall use Java Servlets running on Apache Tomcat to process user requests and business logic.
+
+(AR-04) The backend MYSQL database shall store assignment information, deadlines, completion status, notes, and reward points.
+
+(AR-05) The application shall allow configurations for MYSQL connection using local or remote database credentials.
+
+(AR-06) The system shall use JDBC for communication between the Java backend and MYSQL database.
+
+(AR-07) The system shall support CRUD operations for assignment management.
+
+(AR-08) The architecture shall separate frontend, backend, and database components to improve maintainability and scalability.
+
+(AR-09) The system shall support multiple assignment records stored in the database.
+
+(AR-10) The application shall be accessible through a web browser connected to the Apache Tomcat server.
+
+(AR-11) The system shall support reward point calculations after assignment completion.
+
+(AR-12) The system architecture shall allow future expansion such as mobile support, email notifications, and calendar integration.
