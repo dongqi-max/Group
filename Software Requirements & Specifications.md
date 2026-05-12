@@ -40,7 +40,7 @@
 <br/>
 (SF-09) When an assignment is past due, the system shall remove points/credits. <br/>
 <br/>
-(SF-10) The system shall display the user’s total points.  <br/>
+(SF-10) When the application runs, the system shall display the user’s total points.  <br/>
 <br/>
 (SF-11) When an assignment is added, the system shall send or display reminders for upcoming assignment deadlines.  <br/>
 <br/>
