@@ -1,17 +1,19 @@
--- Create the database and table for the assignment planner.
 CREATE DATABASE IF NOT EXISTS assignment_planner;
 USE assignment_planner;
 
-CREATE TABLE IF NOT EXISTS assignments (
+DROP TABLE IF EXISTS assignments;
+
+CREATE TABLE assignments (
     id INT AUTO_INCREMENT PRIMARY KEY,
     course VARCHAR(100) NOT NULL,
-    title VARCHAR(255) NOT NULL,
-    due_date DATE,
+    title VARCHAR(200) NOT NULL,
+    due_date VARCHAR(20),
     estimate_hours INT DEFAULT 1,
-    priority VARCHAR(10) DEFAULT 'Low',
+    priority VARCHAR(20) DEFAULT 'Low',
     notes TEXT,
-    completed TINYINT(1) DEFAULT 0,
+    status VARCHAR(20) DEFAULT 'Not Started',
+    completed BOOLEAN DEFAULT FALSE,
     points INT DEFAULT 0,
-    reward_redeemed TINYINT(1) DEFAULT 0,
-    penalty_applied TINYINT(1) DEFAULT 0
+    reward_redeemed BOOLEAN DEFAULT FALSE,
+    penalty_applied BOOLEAN DEFAULT FALSE
 );
