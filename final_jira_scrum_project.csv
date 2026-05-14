@@ -1,0 +1,47 @@
+Issue Type,Summary,Description,Epic Link,Sprint,Priority,Original Estimate,Assignee,Labels,Expected Test Result
+Epic,Project Planning,Initial planning and setup,,Sprint 1,High,6h,,planning,
+Story,Define software requirements,Finalize SR/SF/AR requirements,Project Planning,Sprint 1,High,4h,,requirements,Requirements approved
+Task,Create Jira Scrum board,Setup Jira board and workflows,Project Planning,Sprint 1,Medium,2h,,jira,Board operational
+Task,Create GitHub repository,Initialize project repository,Project Planning,Sprint 1,Medium,2h,,github,Repository accessible
+Epic,Database Setup,Database architecture and JDBC setup,,Sprint 2,High,8h,,database,
+Story,Design MySQL schema,Create assignment database schema,Database Setup,Sprint 2,High,5h,,mysql,Schema stores assignments correctly
+Task,Configure JDBC connection,Connect Java backend to MySQL,Database Setup,Sprint 2,High,4h,,jdbc,Database connection successful
+Task,Test CRUD SQL queries,Verify insert/update/delete queries,Database Setup,Sprint 2,Medium,3h,,testing,CRUD queries working
+Epic,Assignment CRUD,Core assignment management,,Sprint 3,High,10h,,crud,
+Story,Add assignment feature,Users can create assignments,Assignment CRUD,Sprint 3,High,6h,,frontend;backend,Assignments added successfully
+Task,Build add assignment JSP,Create assignment input form,Assignment CRUD,Sprint 3,Medium,4h,,jsp,Form accepts input
+Task,Implement AddAssignment servlet,Process assignment creation,Assignment CRUD,Sprint 3,High,5h,,servlet,Assignment saved to DB
+Story,Edit and delete assignments,Users can update/remove assignments,Assignment CRUD,Sprint 3,High,6h,,crud,Assignments editable/deletable
+Task,Implement edit feature,Modify assignment data,Assignment CRUD,Sprint 3,Medium,4h,,edit,Assignment updates saved
+Task,Implement delete feature,Delete assignments from DB,Assignment CRUD,Sprint 3,Medium,3h,,delete,Assignment removed correctly
+Epic,Assignment Tracking,Completion tracking system,,Sprint 4,High,10h,,tracking,
+Story,Mark assignments complete,Users can complete assignments,Assignment Tracking,Sprint 4,High,5h,,completion,Assignments move to completed list
+Task,Create completed assignments page,Separate completed tasks,Assignment Tracking,Sprint 4,Medium,3h,,ui,Completed assignments displayed
+Task,Implement assignment status logic,Track assignment states,Assignment Tracking,Sprint 4,Medium,4h,,logic,Status changes reflected
+Epic,Sorting and Priority,Assignment organization features,,Sprint 5,Medium,8h,,sorting,
+Story,Sort by due date,Assignments sorted chronologically,Sorting and Priority,Sprint 5,Medium,4h,,sorting,Assignments sorted by date
+Task,Implement date sorting query,Sort using SQL query,Sorting and Priority,Sprint 5,Medium,3h,,mysql,Date sorting works
+Story,Sort by priority,Assignments sorted by priority,Sorting and Priority,Sprint 5,Medium,4h,,priority,Priority sorting works
+Task,Implement priority sorting,Low/medium/high ordering,Sorting and Priority,Sprint 5,Medium,3h,,priority,Priority displayed correctly
+Epic,Reward System,Gamification feature,,Sprint 6,Medium,8h,,rewards,
+Story,Reward points for completion,Users earn points,Reward System,Sprint 6,Medium,4h,,gamification,Points added after completion
+Task,Implement points calculation,Calculate assignment rewards,Reward System,Sprint 6,Medium,4h,,backend,Points updated correctly
+Task,Display user points,Show total reward points,Reward System,Sprint 6,Low,2h,,frontend,Points visible
+Epic,Reminder Features,Deadline notifications,,Sprint 7,Medium,8h,,notifications,
+Story,Assignment reminders,Warn users before deadlines,Reminder Features,Sprint 7,Medium,5h,,notifications,Reminders displayed
+Task,Implement reminder warnings,Detect upcoming deadlines,Reminder Features,Sprint 7,Medium,4h,,logic,Warnings triggered correctly
+Task,Add reminder UI,Display reminder messages,Reminder Features,Sprint 7,Low,2h,,ui,Reminder visible
+Epic,Testing and QA,Validation and testing,,Sprint 8,High,10h,,testing,
+Story,Functional testing,Test all major features,Testing and QA,Sprint 8,High,6h,,qa,All core features tested
+Task,Prepare test files,Create validation data,Testing and QA,Sprint 8,Medium,3h,,testing,Test files generated
+Task,Fix identified bugs,Resolve testing issues,Testing and QA,Sprint 8,High,5h,,bugfix,Critical bugs resolved
+Epic,Documentation,Final project documents,,Sprint 9,High,10h,,documentation,
+Story,Create traceability matrix,Map requirements to tests,Documentation,Sprint 9,High,5h,,traceability,Traceability completed
+Task,Write deployment guide,Document setup process,Documentation,Sprint 9,Medium,4h,,deployment,Guide usable
+Task,Write user manual,Explain software usage,Documentation,Sprint 9,Medium,4h,,manual,Manual completed
+Task,Prepare README,Explain project structure,Documentation,Sprint 9,Low,2h,,readme,README finalized
+Epic,Demo and Submission,Final presentation and delivery,,Sprint 10,High,10h,,demo,
+Story,Prepare showcase demo,Create presentation walkthrough,Demo and Submission,Sprint 10,High,5h,,presentation,Demo runs successfully
+Task,Practice team presentation,Rehearse showcase,Demo and Submission,Sprint 10,Medium,3h,,meeting,Presentation timing acceptable
+Task,Package final submission zip,Prepare final deliverables,Demo and Submission,Sprint 10,High,4h,,submission,ZIP file complete
+Task,Upload final project,Submit project before deadline,Demo and Submission,Sprint 10,High,2h,,delivery,Submission successful
