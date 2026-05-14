@@ -1,4 +1,55 @@
+HOW-TO MANUAL
+Student Assignment Tracker
 
-The Student Assignment Tracker is a web-based application that allows students to manage assignments, track completion progress, organize tasks by priority, and earn reward points for completing assignments.
+Step 1: Open MySQL Workbench and run:
+CREATE DATABASE IF NOT EXISTS assignment_planner;
+USE assignment_planner;
+DROP TABLE IF EXISTS assignments;
 
-This manual explains how to install, configure, build, deploy, and run the system.
+CREATE TABLE assignments (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    course VARCHAR(100) NOT NULL,
+    title VARCHAR(200) NOT NULL,
+    due_date VARCHAR(20),
+    estimate_hours INT DEFAULT 1,
+    priority VARCHAR(20) DEFAULT 'Low',
+    notes TEXT,
+    status VARCHAR(20) DEFAULT 'Not Started',
+    completed BOOLEAN DEFAULT FALSE,
+    points INT DEFAULT 0,
+    reward_redeemed BOOLEAN DEFAULT FALSE,
+    penalty_applied BOOLEAN DEFAULT FALSE
+);
+
+Step 2: Configure Database Connection
+Open: 
+src/main/java/edu/cs/AssignmentDAO.java
+
+Update:
+private String jdbcUsername = "root";
+private String jdbcPassword = "YOUR_PASSWORD";
+
+How to Run the System
+Step 1: Open Terminal
+Navigate to the project folder:
+cd ~/eclipse-workspace/Final_Project
+
+Step 2: Build the Project
+Run:
+mvn clean package
+
+Step 3: Deploy WAR File
+Copy the WAR file into Tomcat webapps folder:
+cp target/assignment-planner.war ~/Desktop/apache-tomcat-9.0.115/webapps/
+
+Step 4: Start Tomcat
+Run:
+~/Desktop/apache-tomcat-9.0.115/bin/startup.sh
+
+Step 5: Open the Application
+Open a web browser and go to:
+http://localhost:8080/assignment-planner/
+
+
+
+
