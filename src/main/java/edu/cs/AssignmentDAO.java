@@ -10,9 +10,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AssignmentDAO {
-    private String jdbcURL = "jdbc:mysql://localhost:3306/assignment_planner?useSSL=false&serverTimezone=UTC";
-    private String jdbcUsername = "root";
-    private String jdbcPassword = "sheshou1217";
+
+   private String jdbcURL =
+        "jdbc:mysql://localhost:3306/assignment_planner?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
+
+private String jdbcUsername = "root";
+private String jdbcPassword = "sheshou1217";
 
     private static final String INSERT_ASSIGNMENT_SQL = "INSERT INTO assignments (course, title, due_date, estimate_hours, priority, notes, completed, points, reward_redeemed, penalty_applied) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
     private static final String SELECT_ASSIGNMENT_BY_ID = "SELECT * FROM assignments WHERE id = ?;";
