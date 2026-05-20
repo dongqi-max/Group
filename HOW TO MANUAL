@@ -1,7 +1,8 @@
 HOW TO MANUAL
 Student Assignment Tracker
 
-Step 1: Open MySQL Workbench and run:
+*** Open MySQL Workbench and run:
+
 CREATE DATABASE IF NOT EXISTS assignment_planner;
 USE assignment_planner;
 
@@ -31,7 +32,7 @@ CREATE TABLE assignments (
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
-Step 2: Configure Database Connection
+*** Configure Database Connection ***
 Open: 
 src/main/java/edu/cs/AssignmentDAO.java
 
@@ -39,7 +40,7 @@ Update:
 private String jdbcUsername = "root";
 private String jdbcPassword = "YOUR_PASSWORD";
 
-How to Run the System
+*** How to Run the System ***
 Step 1: Open Terminal
 Navigate to the project folder:
 cd ~/eclipse-workspace/Final_Project
