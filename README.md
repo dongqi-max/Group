@@ -81,15 +81,28 @@ Architecture Requirements
 This project is implemented as a Java Servlet web application for Apache Tomcat.
 
 ## Files generated
-- `pom.xml`
-- `src/main/java/edu/cs/Assignment.java`
-- `src/main/java/edu/cs/AssignmentDAO.java`
-- `src/main/java/edu/cs/AssignmentServlet.java`
-- `src/main/webapp/index.jsp`
-- `src/main/webapp/list.jsp`
-- `src/main/webapp/assignment-form.jsp`
-- `src/main/webapp/WEB-INF/web.xml`
-- `db-schema.sql`
+src/main/java/edu/cs/
+- Assignment.java
+- AssignmentDAO.java
+- AssignmentServlet.java
+- RegisterServlet.java
+
+src/main/webapp/
+- index.jsp
+- list.jsp
+- login.jsp
+- register.jsp
+- assignment-form.jsp
+- assignment-detail.jsp
+
+src/main/webapp/WEB-INF/
+- web.xml
+
+Database:
+- db-schema.sql
+
+Build File:
+- pom.xml
 
 ## How to run
 1. Create the database with `db-schema.sql`.
