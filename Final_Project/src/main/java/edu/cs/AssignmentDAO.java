@@ -1,6 +1,10 @@
 package edu.cs;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,13 +12,30 @@ import java.util.List;
 public class AssignmentDAO {
 
     private String jdbcURL =
-            "jdbc:mysql://localhost:3306/assignment_planner?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
+    "jdbc:mysql://kodama.proxy.rlwy.net:11559/railway?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
+
 
     private String jdbcUsername = "root";
-    private String jdbcPassword = "sheshou1217";
+    private String jdbcPassword = "UhiiJVpLQXmqdRweZBpcdsoZlzkfSonc";
 
     public Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
+
+        try {
+
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            System.out.println("MYSQL DRIVER LOADED");
+
+        } catch (ClassNotFoundException e) {
+
+            e.printStackTrace();
+        }
+
+        return DriverManager.getConnection(
+                jdbcURL,
+                jdbcUsername,
+                jdbcPassword
+        );
     }
 
     public void insertAssignment(Assignment assignment) throws SQLException {
