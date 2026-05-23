@@ -1,6 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
          http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
@@ -20,34 +20,35 @@
 
     <dependencies>
 
+        <!-- Embedded Tomcat -->
         <dependency>
-<<<<<<< HEAD
             <groupId>org.apache.tomcat.embed</groupId>
-             <artifactId>tomcat-embed-core</artifactId>
-             <version>9.0.79</version>
-        </dependency>
-        <dependency>
-             <groupId>org.apache.tomcat.embed</groupId>
-             <artifactId>tomcat-embed-jasper</artifactId>
+            <artifactId>tomcat-embed-core</artifactId>
             <version>9.0.79</version>
         </dependency>
 
         <dependency>
-=======
->>>>>>> 23118552fa6ea3b69cd5560f6eb69532c7f0c309
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-jasper</artifactId>
+            <version>9.0.79</version>
+        </dependency>
+
+        <!-- Servlet API -->
+        <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>4.0.1</version>
             <scope>provided</scope>
         </dependency>
 
+        <!-- MySQL -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.30</version>
         </dependency>
 
-<<<<<<< HEAD
+        <!-- JUnit -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
@@ -55,13 +56,11 @@
             <scope>test</scope>
         </dependency>
 
-=======
->>>>>>> 23118552fa6ea3b69cd5560f6eb69532c7f0c309
     </dependencies>
 
     <build>
         <finalName>assignment-planner</finalName>
-<<<<<<< HEAD
+
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -69,11 +68,7 @@
                 <version>3.2.5</version>
             </plugin>
         </plugins>
+
     </build>
 
 </project>
-=======
-    </build>
-
-</project>
->>>>>>> 23118552fa6ea3b69cd5560f6eb69532c7f0c309
