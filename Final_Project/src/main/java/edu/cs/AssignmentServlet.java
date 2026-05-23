@@ -1,11 +1,15 @@
 package edu.cs;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.*;
-
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDate;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet("/assignments")
 public class AssignmentServlet extends HttpServlet {
@@ -39,9 +43,13 @@ public class AssignmentServlet extends HttpServlet {
 
                 dao.applyOverduePenalty(userId);
 
+                java.util.List<Assignment> list = dao.selectAllAssignments(sortBy, userId);
+                // assign schedules across the list to avoid clashes
+                Assignment.assignSchedules(list);
+
                 request.setAttribute(
-                        "assignmentList",
-                        dao.selectAllAssignments(sortBy, userId)
+                    "assignmentList",
+                    list
                 );
 
                 request.setAttribute(
@@ -136,6 +144,11 @@ public class AssignmentServlet extends HttpServlet {
                 );
             }
 
+            else if (action.equals("generateWeeklyReport")) {
+
+                generateWeeklyReport(response, userId);
+            }
+
             else {
 
                 response.sendRedirect(
@@ -148,6 +161,83 @@ public class AssignmentServlet extends HttpServlet {
 
             throw new ServletException(e);
         }
+    }
+
+    private void generateWeeklyReport(HttpServletResponse response, int userId)
+            throws SQLException, IOException {
+
+        dao.applyOverduePenalty(userId);
+        java.util.List<Assignment> assignments =
+                dao.selectAllAssignments("dueDate", userId);
+
+        LocalDate today = LocalDate.now();
+        LocalDate weekStart = today.minusDays(6);
+
+        int completed = 0;
+        int overdue = 0;
+        int incomplete = 0;
+        int total = 0;
+
+        for (Assignment assignment : assignments) {
+
+            if (assignment.getDueDate() == null ||
+                    assignment.getDueDate().isEmpty()) {
+                continue;
+            }
+
+            LocalDate dueDate;
+
+            try {
+                dueDate = LocalDate.parse(assignment.getDueDate());
+            } catch (Exception e) {
+                continue;
+            }
+
+            if (dueDate.isBefore(weekStart) || dueDate.isAfter(today)) {
+                continue;
+            }
+
+            total++;
+
+            if (assignment.isCompleted()) {
+                completed++;
+            } else {
+                incomplete++;
+
+                if (dueDate.isBefore(today)) {
+                    overdue++;
+                }
+            }
+        }
+
+        double productivity = total == 0
+                ? 0.0
+                : (completed * 100.0) / total;
+
+        String report = String.format(
+                "Weekly Assignment Report%n"
+                        + "Generated: %s%n%n"
+                        + "Date range: %s to %s%n"
+                        + "Completed assignments: %d%n"
+                        + "Overdue assignments: %d%n"
+                        + "Incomplete assignments: %d%n"
+                        + "Overall productivity: %.2f%%%n",
+                today,
+                weekStart,
+                today,
+                completed,
+                overdue,
+                incomplete,
+                productivity
+        );
+
+        response.setContentType("text/plain");
+        response.setCharacterEncoding("UTF-8");
+        response.setHeader(
+                "Content-Disposition",
+                "attachment; filename=\"weekly-report.txt\""
+        );
+        response.getWriter().write(report);
     }
 
     @Override
