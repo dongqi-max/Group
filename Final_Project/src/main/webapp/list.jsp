@@ -12,9 +12,7 @@
             background-color: #f4f6f8;
         }
 
-        h1, h2 {
-            color: #2c3e50;
-        }
+        h1, h2 { color: #2c3e50; }
 
         .card {
             background: white;
@@ -38,17 +36,9 @@
             font-size: 13px;
         }
 
-        .btn-red {
-            background-color: #e74c3c;
-        }
-
-        .btn-green {
-            background-color: #27ae60;
-        }
-
-        .btn-gray {
-            background-color: #7f8c8d;
-        }
+        .btn-red { background-color: #e74c3c; }
+        .btn-green { background-color: #27ae60; }
+        .btn-gray { background-color: #7f8c8d; }
 
         table {
             width: 100%;
@@ -123,7 +113,6 @@
     LocalDate today = LocalDate.now();
 
     for (Assignment a : assignmentList) {
-
         if (a.isCompleted()) {
             completedCount++;
         } else {
@@ -138,7 +127,6 @@
 
             if (!due.isBefore(today)
                     && !due.isAfter(today.plusDays(2))) {
-
                 dueSoonCount++;
             }
         }
@@ -147,11 +135,21 @@
 
 <h1>Assignment Checklist</h1>
 
+<p>
+    Welcome,
+    <strong><%= session.getAttribute("username") %></strong>
+    |
+    <a class="btn btn-red btn-small"
+       href="<%= request.getContextPath() %>/logout">
+        Logout
+    </a>
+</p>
+
 <div class="card">
     <p>
         Keep your tasks organized,
         see due reminders,
-        and earn rewards.
+        and track your productivity.
     </p>
 
     <a class="btn"
@@ -162,94 +160,62 @@
 
 <div class="summary-box">
     <p>Total Assignments</p>
-    <div class="summary-number">
-        <%= totalAssignments %>
-    </div>
+    <div class="summary-number"><%= totalAssignments %></div>
 </div>
 
 <div class="summary-box">
     <p>Completed</p>
-    <div class="summary-number">
-        <%= completedCount %>
-    </div>
+    <div class="summary-number"><%= completedCount %></div>
 </div>
 
 <div class="summary-box">
     <p>Incomplete</p>
-    <div class="summary-number">
-        <%= incompleteCount %>
-    </div>
+    <div class="summary-number"><%= incompleteCount %></div>
 </div>
 
 <div class="summary-box">
     <p>Due Soon</p>
-    <div class="summary-number">
-        <%= dueSoonCount %>
-    </div>
+    <div class="summary-number"><%= dueSoonCount %></div>
 </div>
 
 <div class="card">
-
     <p>
-        <strong>Total Points:</strong>
+        <strong>Productivity Score:</strong>
         <%= request.getAttribute("totalPoints") %>
     </p>
 
     <p>
-        <strong>Redeemable Points:</strong>
-        <%= request.getAttribute("redeemablePoints") %>
-
-        <a class="btn btn-green btn-small"
-           href="<%= request.getContextPath() %>/assignments?action=redeem">
-            Redeem Rewards
-        </a>
-    </p>
-
-    <p>
         Sort by:
-
-        <a href="<%= request.getContextPath() %>/assignments?action=list&sortBy=dueDate">
-            Due Date
-        </a>
-
+        <a href="<%= request.getContextPath() %>/assignments?action=list&sortBy=dueDate">Due Date</a>
         |
-
-        <a href="<%= request.getContextPath() %>/assignments?action=list&sortBy=priority">
-            Priority
-        </a>
+        <a href="<%= request.getContextPath() %>/assignments?action=list&sortBy=priority">Priority</a>
     </p>
 </div>
 
 <div class="card">
-
     <h2>Reminder / Due Soon</h2>
 
     <ul>
-
     <%
         boolean hasReminder = false;
 
         for (Assignment a : assignmentList) {
-
             if (!a.isCompleted()
                     && a.getDueDate() != null
                     && !a.getDueDate().isEmpty()) {
 
-                LocalDate due =
-                        LocalDate.parse(a.getDueDate());
+                LocalDate due = LocalDate.parse(a.getDueDate());
 
                 if (!due.isBefore(today)
                         && !due.isAfter(today.plusDays(2))) {
 
                     hasReminder = true;
     %>
-
         <li>
             <strong><%= a.getTitle() %></strong>
             is due on
             <%= a.getDueDate() %>
         </li>
-
     <%
                 }
             }
@@ -257,22 +223,17 @@
 
         if (!hasReminder) {
     %>
-
         <li>No assignments due soon.</li>
-
     <%
         }
     %>
-
     </ul>
 </div>
 
 <div class="card">
-
     <h2>Incomplete Assignments</h2>
 
     <table>
-
         <tr>
             <th>Course</th>
             <th>Title</th>
@@ -288,17 +249,14 @@
         boolean hasIncomplete = false;
 
         for (Assignment a : assignmentList) {
-
             if (!a.isCompleted()) {
-
                 hasIncomplete = true;
 
                 String priorityClass = "low";
 
                 if ("High".equals(a.getPriority())) {
                     priorityClass = "high";
-                }
-                else if ("Medium".equals(a.getPriority())) {
+                } else if ("Medium".equals(a.getPriority())) {
                     priorityClass = "medium";
                 }
 
@@ -306,62 +264,36 @@
 
                 if (a.getDueDate() != null
                         && !a.getDueDate().isEmpty()) {
-
-                    LocalDate due =
-                            LocalDate.parse(a.getDueDate());
-
+                    LocalDate due = LocalDate.parse(a.getDueDate());
                     overdue = due.isBefore(today);
                 }
     %>
 
         <tr>
-
             <td><%= a.getCourse() %></td>
-
             <td><%= a.getTitle() %></td>
-
             <td>
                 <%= a.getDueDate() %>
-
                 <% if (overdue) { %>
-                    <span class="overdue">
-                        OVERDUE
-                    </span>
+                    <span class="overdue">OVERDUE</span>
                 <% } %>
             </td>
-
-            <td class="<%= priorityClass %>">
-                <%= a.getPriority() %>
-            </td>
-
+            <td class="<%= priorityClass %>"><%= a.getPriority() %></td>
             <td><%= a.getStatus() %></td>
-
             <td><%= a.getEstimateHours() %></td>
-
             <td><%= a.getPoints() %></td>
-
             <td>
+                <a class="btn btn-small"
+                   href="<%= request.getContextPath() %>/assignments?action=detail&id=<%= a.getId() %>">Details</a>
 
                 <a class="btn btn-small"
-                   href="<%= request.getContextPath() %>/assignments?action=detail&id=<%= a.getId() %>">
-                    Details
-                </a>
-
-                <a class="btn btn-small"
-                   href="<%= request.getContextPath() %>/assignments?action=edit&id=<%= a.getId() %>">
-                    Edit
-                </a>
+                   href="<%= request.getContextPath() %>/assignments?action=edit&id=<%= a.getId() %>">Edit</a>
 
                 <a class="btn btn-green btn-small"
-                   href="<%= request.getContextPath() %>/assignments?action=complete&id=<%= a.getId() %>">
-                    Complete
-                </a>
+                   href="<%= request.getContextPath() %>/assignments?action=complete&id=<%= a.getId() %>">Complete</a>
 
                 <a class="btn btn-red btn-small"
-                   href="<%= request.getContextPath() %>/assignments?action=delete&id=<%= a.getId() %>">
-                    Delete
-                </a>
-
+                   href="<%= request.getContextPath() %>/assignments?action=delete&id=<%= a.getId() %>">Delete</a>
             </td>
         </tr>
 
@@ -371,26 +303,19 @@
 
         if (!hasIncomplete) {
     %>
-
         <tr>
-            <td colspan="8">
-                No incomplete assignments yet.
-            </td>
+            <td colspan="8">No incomplete assignments yet.</td>
         </tr>
-
     <%
         }
     %>
-
     </table>
 </div>
 
 <div class="card">
-
     <h2>Completed Assignments</h2>
 
     <table>
-
         <tr>
             <th>Course</th>
             <th>Title</th>
@@ -406,61 +331,38 @@
         boolean hasCompleted = false;
 
         for (Assignment a : assignmentList) {
-
             if (a.isCompleted()) {
-
                 hasCompleted = true;
 
                 String priorityClass = "low";
 
                 if ("High".equals(a.getPriority())) {
                     priorityClass = "high";
-                }
-                else if ("Medium".equals(a.getPriority())) {
+                } else if ("Medium".equals(a.getPriority())) {
                     priorityClass = "medium";
                 }
     %>
 
         <tr>
-
             <td><%= a.getCourse() %></td>
-
             <td><%= a.getTitle() %></td>
-
             <td><%= a.getDueDate() %></td>
-
-            <td class="<%= priorityClass %>">
-                <%= a.getPriority() %>
-            </td>
-
+            <td class="<%= priorityClass %>"><%= a.getPriority() %></td>
             <td><%= a.getStatus() %></td>
-
             <td><%= a.getEstimateHours() %></td>
-
             <td><%= a.getPoints() %></td>
-
             <td>
+                <a class="btn btn-small"
+                   href="<%= request.getContextPath() %>/assignments?action=detail&id=<%= a.getId() %>">Details</a>
 
                 <a class="btn btn-small"
-                   href="<%= request.getContextPath() %>/assignments?action=detail&id=<%= a.getId() %>">
-                    Details
-                </a>
-
-                <a class="btn btn-small"
-                   href="<%= request.getContextPath() %>/assignments?action=edit&id=<%= a.getId() %>">
-                    Edit
-                </a>
+                   href="<%= request.getContextPath() %>/assignments?action=edit&id=<%= a.getId() %>">Edit</a>
 
                 <a class="btn btn-gray btn-small"
-                   href="<%= request.getContextPath() %>/assignments?action=undo&id=<%= a.getId() %>">
-                    Undo
-                </a>
+                   href="<%= request.getContextPath() %>/assignments?action=undo&id=<%= a.getId() %>">Undo</a>
 
                 <a class="btn btn-red btn-small"
-                   href="<%= request.getContextPath() %>/assignments?action=delete&id=<%= a.getId() %>">
-                    Delete
-                </a>
-
+                   href="<%= request.getContextPath() %>/assignments?action=delete&id=<%= a.getId() %>">Delete</a>
             </td>
         </tr>
 
@@ -470,17 +372,12 @@
 
         if (!hasCompleted) {
     %>
-
         <tr>
-            <td colspan="8">
-                No completed assignments yet.
-            </td>
+            <td colspan="8">No completed assignments yet.</td>
         </tr>
-
     <%
         }
     %>
-
     </table>
 </div>
 

@@ -11,6 +11,8 @@
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>
 
+    <!-- Login Servlet -->
+
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>edu.cs.LoginServlet</servlet-class>
@@ -21,6 +23,8 @@
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
 
+    <!-- Register Servlet -->
+
     <servlet>
         <servlet-name>RegisterServlet</servlet-name>
         <servlet-class>edu.cs.RegisterServlet</servlet-class>
@@ -29,6 +33,18 @@
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+
+    <!-- Logout Servlet -->
+
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>edu.cs.LogoutServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/logout</url-pattern>
     </servlet-mapping>
 
 </web-app>
