@@ -5,6 +5,8 @@ public class Assignment {
     private String course;
     private String title;
     private String dueDate;
+    private String startDate;
+    private String schedule;
     private int estimateHours;
     private String priority;
     private String notes;
@@ -155,5 +157,266 @@ public class Assignment {
 
     public void setUserId(int userId) {
         this.userId = userId;
+    }
+
+    public String getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
+    }
+
+    public String getSchedule() {
+        return schedule;
+    }
+
+    public void setSchedule(String schedule) {
+        this.schedule = schedule;
+    }
+
+    public static void assignSchedules(java.util.List<Assignment> assignments) {
+        if (assignments == null || assignments.isEmpty()) {
+            return;
+        }
+
+        assignments.sort((a, b) -> {
+            int compareDue = compareNullSafe(a.getDueDate(), b.getDueDate());
+            if (compareDue != 0) {
+                return compareDue;
+            }
+            int comparePriority = priorityValue(a.getPriority()) - priorityValue(b.getPriority());
+            if (comparePriority != 0) {
+                return comparePriority;
+            }
+            return Integer.compare(a.getEstimateHours(), b.getEstimateHours());
+        });
+
+        java.time.LocalDate today = java.time.LocalDate.now();
+        java.util.Map<java.time.LocalDate, java.util.List<TimeRange>> booked = new java.util.HashMap<>();
+
+        for (Assignment assignment : assignments) {
+            String dueDate = assignment.getDueDate();
+            int estimateHours = assignment.getEstimateHours();
+
+            if (dueDate == null || dueDate.isEmpty() || estimateHours <= 0) {
+                assignment.setSchedule("");
+                assignment.setStartDate(null);
+                continue;
+            }
+
+            java.time.LocalDate due = java.time.LocalDate.parse(dueDate);
+            java.time.LocalDate earliest = today.isBefore(due) ? today : due;
+            int remaining = Math.max(1, estimateHours);
+            java.util.List<String> sessions = new java.util.ArrayList<>();
+
+            java.time.LocalDate day = due;
+            while (remaining > 0 && !day.isBefore(earliest)) {
+                java.util.List<TimeRange> freeRanges = calculateFreeRanges(day, booked);
+                for (int i = freeRanges.size() - 1; i >= 0 && remaining > 0; i--) {
+                    TimeRange range = freeRanges.get(i);
+                    int sessionHours = Math.min(remaining, Math.min(maxSessionHours(assignment.getPriority()), range.durationHours()));
+                    if (sessionHours <= 0) {
+                        continue;
+                    }
+                    java.time.LocalTime sessionEnd = range.end;
+                    java.time.LocalTime sessionStart = sessionEnd.minusHours(sessionHours);
+                    TimeRange scheduled = new TimeRange(sessionStart, sessionEnd);
+                    sessions.add(0, formatSession(day, scheduled));
+                    bookRange(day, booked, scheduled);
+                    remaining -= sessionHours;
+                }
+                day = day.minusDays(1);
+            }
+
+            if (remaining > 0) {
+                day = due.plusDays(1);
+                while (remaining > 0) {
+                    java.util.List<TimeRange> freeRanges = calculateFreeRanges(day, booked);
+                    for (int i = freeRanges.size() - 1; i >= 0 && remaining > 0; i--) {
+                        TimeRange range = freeRanges.get(i);
+                        int sessionHours = Math.min(remaining, Math.min(maxSessionHours(assignment.getPriority()), range.durationHours()));
+                        if (sessionHours <= 0) {
+                            continue;
+                        }
+                        java.time.LocalTime sessionStart = range.start;
+                        java.time.LocalTime sessionEnd = sessionStart.plusHours(sessionHours);
+                        TimeRange scheduled = new TimeRange(sessionStart, sessionEnd);
+                        sessions.add(formatSession(day, scheduled));
+                        bookRange(day, booked, scheduled);
+                        remaining -= sessionHours;
+                    }
+                    day = day.plusDays(1);
+                }
+            }
+
+            String schedule = String.join(", ", sessions);
+            assignment.setSchedule(schedule);
+            assignment.setStartDate(extractStartDate(schedule));
+        }
+    }
+
+    private static int compareNullSafe(String a, String b) {
+        if (a == null && b == null) {
+            return 0;
+        }
+        if (a == null) {
+            return 1;
+        }
+        if (b == null) {
+            return -1;
+        }
+        return a.compareTo(b);
+    }
+
+    private static int priorityValue(String priority) {
+        if ("High".equalsIgnoreCase(priority)) {
+            return 1;
+        }
+        if ("Medium".equalsIgnoreCase(priority)) {
+            return 2;
+        }
+        return 3;
+    }
+
+    private static int maxSessionHours(String priority) {
+        if ("High".equalsIgnoreCase(priority)) {
+            return 3;
+        }
+        if ("Medium".equalsIgnoreCase(priority)) {
+            return 2;
+        }
+        return 1;
+    }
+
+    private static java.util.List<TimeRange> calculateFreeRanges(java.time.LocalDate day,
+                                                                 java.util.Map<java.time.LocalDate, java.util.List<TimeRange>> booked) {
+        java.util.List<TimeRange> available = new java.util.ArrayList<>();
+        available.add(new TimeRange(java.time.LocalTime.of(9, 0), java.time.LocalTime.of(12, 0)));
+        available.add(new TimeRange(java.time.LocalTime.of(13, 0), java.time.LocalTime.of(17, 0)));
+
+        java.util.List<TimeRange> reserved = booked.getOrDefault(day, new java.util.ArrayList<>());
+        reserved.sort((a, b) -> a.start.compareTo(b.start));
+
+        java.util.List<TimeRange> free = new java.util.ArrayList<>();
+        for (TimeRange slot : available) {
+            java.time.LocalTime slotStart = slot.start;
+            for (TimeRange reservedRange : reserved) {
+                if (!reservedRange.overlaps(slotStart, slot.end)) {
+                    continue;
+                }
+                if (reservedRange.start.isAfter(slotStart)) {
+                    free.add(new TimeRange(slotStart, reservedRange.start));
+                }
+                slotStart = reservedRange.end.isAfter(slotStart) ? reservedRange.end : slotStart;
+                if (!slotStart.isBefore(slot.end)) {
+                    break;
+                }
+            }
+            if (slotStart.isBefore(slot.end)) {
+                free.add(new TimeRange(slotStart, slot.end));
+            }
+        }
+
+        java.util.List<TimeRange> result = new java.util.ArrayList<>();
+        for (TimeRange range : free) {
+            if (range.durationHours() > 0) {
+                result.add(range);
+            }
+        }
+        return result;
+    }
+
+    private static void bookRange(java.time.LocalDate day,
+                                  java.util.Map<java.time.LocalDate, java.util.List<TimeRange>> booked,
+                                  TimeRange range) {
+        java.util.List<TimeRange> list = booked.computeIfAbsent(day, k -> new java.util.ArrayList<>());
+        list.add(range);
+        list.sort((a, b) -> a.start.compareTo(b.start));
+    }
+
+    private static String formatSession(java.time.LocalDate day, TimeRange range) {
+        return String.format("%s %s-%s",
+                day.toString(),
+                formatTime(range.start),
+                formatTime(range.end));
+    }
+
+    private static String formatTime(java.time.LocalTime time) {
+        int hour = time.getHour();
+        int minute = time.getMinute();
+        String suffix = hour >= 12 ? "PM" : "AM";
+        int displayHour = hour % 12;
+        if (displayHour == 0) {
+            displayHour = 12;
+        }
+        return String.format("%d:%02d%s", displayHour, minute, suffix);
+    }
+
+    private static String extractStartDate(String schedule) {
+        if (schedule == null || schedule.isEmpty()) {
+            return null;
+        }
+        String first = schedule.split(",")[0].trim();
+        if (first.isEmpty()) {
+            return null;
+        }
+        return first.split(" ")[0];
+    }
+
+    private static class TimeRange {
+        private final java.time.LocalTime start;
+        private final java.time.LocalTime end;
+
+        private TimeRange(java.time.LocalTime start, java.time.LocalTime end) {
+            this.start = start;
+            this.end = end;
+        }
+
+        private int durationHours() {
+            return (int) java.time.Duration.between(start, end).toHours();
+        }
+
+        private boolean overlaps(java.time.LocalTime otherStart, java.time.LocalTime otherEnd) {
+            return !otherStart.isAfter(end) && !otherEnd.isBefore(start);
+        }
+    }
+
+    public static String calculateStartDate(String dueDate, String priority, int estimateHours) {
+        String schedule = calculateStandaloneSchedule(dueDate, priority, estimateHours);
+        return extractStartDate(schedule);
+    }
+
+    public static String calculateStandaloneSchedule(String dueDate, String priority, int estimateHours) {
+        if (dueDate == null || dueDate.isEmpty() || estimateHours <= 0) {
+            return null;
+        }
+
+        try {
+            java.time.LocalDate due = java.time.LocalDate.parse(dueDate);
+            int remaining = Math.max(1, estimateHours);
+            java.time.LocalDate day = due;
+            java.util.List<String> sessions = new java.util.ArrayList<>();
+
+            while (remaining > 0 && !day.isBefore(java.time.LocalDate.now())) {
+                java.util.List<TimeRange> freeRanges = calculateFreeRanges(day, new java.util.HashMap<>());
+                for (int i = freeRanges.size() - 1; i >= 0 && remaining > 0; i--) {
+                    TimeRange range = freeRanges.get(i);
+                    int sessionHours = Math.min(remaining, Math.min(maxSessionHours(priority), range.durationHours()));
+                    if (sessionHours <= 0) {
+                        continue;
+                    }
+                    java.time.LocalTime sessionEnd = range.end;
+                    java.time.LocalTime sessionStart = sessionEnd.minusHours(sessionHours);
+                    sessions.add(0, formatSession(day, new TimeRange(sessionStart, sessionEnd)));
+                    remaining -= sessionHours;
+                }
+                day = day.minusDays(1);
+            }
+
+            return String.join(", ", sessions);
+        } catch (Exception e) {
+            return null;
+        }
     }
 }
