@@ -18,7 +18,11 @@
 <br/>
 (SR-09) As a student, I want to view completed vs incomplete assignments separately so that I can focus on pending work. <br/>
 <br/>
-(SR-10) As a student, I want to prioritize assignments based on due date and priority(low/medium/high).
+(SR-10) As a student, I want to prioritize assignments based on due date and priority(low/medium/high). <br/>
+<br/>
+(SR-11) As a student, I want weekly reports so that I can see how well I am performing. <br/>
+<br/>
+(SR-12) As a student, I want to know when I should do my assignments so that I can get them done by the due date.
  
 # Software Functional Requirements
 
