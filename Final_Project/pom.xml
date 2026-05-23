@@ -36,7 +36,7 @@
     </dependencies>
 
     <build>
-        <finalName>assignment-planner</finalName>
+        <finalName>Final-assignment-planner</finalName>
     </build>
 
 </project>
