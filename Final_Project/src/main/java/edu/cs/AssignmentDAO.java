@@ -86,22 +86,14 @@ public class AssignmentDAO {
             }
         }
 
+        Assignment.assignSchedules(list);
         return list;
     }
 
     public Assignment selectAssignment(int id, int userId) throws SQLException {
-        String sql = "SELECT * FROM assignments WHERE id = ? AND user_id = ?";
-
-        try (Connection conn = getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
-
-            ps.setInt(1, id);
-            ps.setInt(2, userId);
-
-            try (ResultSet rs = ps.executeQuery()) {
-                if (rs.next()) {
-                    return mapAssignment(rs);
-                }
+        for (Assignment assignment : selectAllAssignments("dueDate", userId)) {
+            if (assignment.getId() == id) {
+                return assignment;
             }
         }
 
@@ -261,6 +253,9 @@ public class AssignmentDAO {
         );
 
         assignment.setUserId(rs.getInt("user_id"));
+        assignment.setSchedule("");
+        assignment.setStartDate(null);
+
         return assignment;
     }
 }
