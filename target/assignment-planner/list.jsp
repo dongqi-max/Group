@@ -160,6 +160,18 @@
     </a>
 </div>
 
+<div class="card">
+    <p>
+        Download a weekly report for the past seven days,
+        including completed, overdue, incomplete, and productivity totals.
+    </p>
+
+    <a class="btn btn-green"
+       href="<%= request.getContextPath() %>/assignments?action=weeklyReport">
+        Download Weekly Report
+    </a>
+</div>
+
 <div class="summary-box">
     <p>Total Assignments</p>
     <div class="summary-number">

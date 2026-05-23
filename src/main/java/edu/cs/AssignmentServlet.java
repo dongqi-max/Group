@@ -1,11 +1,14 @@
 package edu.cs;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.*;
-
 import java.io.IOException;
 import java.sql.SQLException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet("/assignments")
 public class AssignmentServlet extends HttpServlet {
@@ -140,6 +143,11 @@ public class AssignmentServlet extends HttpServlet {
                 );
             }
 
+            else if (action.equals("weeklyReport")) {
+
+                writeWeeklyReport(response, userId);
+            }
+
             else {
 
                 response.sendRedirect(
@@ -152,6 +160,22 @@ public class AssignmentServlet extends HttpServlet {
 
             throw new ServletException(e);
         }
+    }
+
+    private void writeWeeklyReport(HttpServletResponse response, int userId)
+            throws IOException, SQLException {
+
+        java.util.List<Assignment> assignments = dao.selectAllAssignments("dueDate", userId);
+        WeeklyReportSummary summary = WeeklyReportGenerator.generateSummary(assignments);
+        String reportContent = WeeklyReportGenerator.buildReportText(summary);
+
+        response.setContentType("text/plain;charset=UTF-8");
+        response.setHeader(
+                "Content-Disposition",
+                "attachment; filename=\"weekly-report.txt\""
+        );
+
+        response.getWriter().write(reportContent);
     }
 
     @Override

@@ -1,7 +1,9 @@
 edu\cs\Assignment.class
 edu\cs\Assignment$TimeRange.class
+edu\cs\WeeklyReportGenerator.class
 edu\cs\LoginServlet.class
 edu\cs\AssignmentDAO.class
+edu\cs\WeeklyReportSummary.class
 edu\cs\AssignmentServlet.class
 edu\cs\EmbeddedTomcatServer.class
 edu\cs\RegisterServlet.class
