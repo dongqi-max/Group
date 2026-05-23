@@ -11,6 +11,7 @@
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>
 
+<<<<<<< HEAD
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>edu.cs.LoginServlet</servlet-class>
@@ -31,4 +32,6 @@
         <url-pattern>/register</url-pattern>
     </servlet-mapping>
 
+=======
+>>>>>>> 23118552fa6ea3b69cd5560f6eb69532c7f0c309
 </web-app>

@@ -1,35 +1,57 @@
 package edu.cs;
 
+<<<<<<< HEAD
+=======
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
+
+>>>>>>> 23118552fa6ea3b69cd5560f6eb69532c7f0c309
 public class Assignment {
     private int id;
     private String course;
     private String title;
     private String dueDate;
+<<<<<<< HEAD
     private String startDate;
     private String schedule;
     private int estimateHours;
     private String priority;
     private String notes;
     private String status;
+=======
+    private int estimateHours;
+    private String priority;
+    private String notes;
+>>>>>>> 23118552fa6ea3b69cd5560f6eb69532c7f0c309
     private boolean completed;
     private int points;
     private boolean rewardRedeemed;
     private boolean penaltyApplied;
+<<<<<<< HEAD
     private int userId;
+=======
+>>>>>>> 23118552fa6ea3b69cd5560f6eb69532c7f0c309
 
     public Assignment() {
         this.priority = "Low";
         this.notes = "";
+<<<<<<< HEAD
         this.status = "Not Started";
     }
 
     public Assignment(String course, String title, String dueDate,
                       int estimateHours, String priority, String notes,
                       String status, boolean completed, int points) {
+=======
+    }
+
+    public Assignment(String course, String title, String dueDate, int estimateHours, String priority, String notes, boolean completed, int points) {
+>>>>>>> 23118552fa6ea3b69cd5560f6eb69532c7f0c309
         this.course = course;
         this.title = title;
         this.dueDate = dueDate;
         this.estimateHours = estimateHours;
+<<<<<<< HEAD
         this.priority = priority;
         this.notes = notes;
         this.status = status;
@@ -41,20 +63,37 @@ public class Assignment {
                       int estimateHours, String priority, String notes,
                       String status, boolean completed, int points,
                       boolean rewardRedeemed, boolean penaltyApplied) {
+=======
+        this.priority = priority != null ? priority : "Low";
+        this.notes = notes != null ? notes : "";
+        this.completed = completed;
+        this.points = points;
+        this.rewardRedeemed = false;
+        this.penaltyApplied = false;
+    }
+
+    public Assignment(int id, String course, String title, String dueDate, int estimateHours, String priority, String notes, boolean completed, int points, boolean rewardRedeemed, boolean penaltyApplied) {
+>>>>>>> 23118552fa6ea3b69cd5560f6eb69532c7f0c309
         this.id = id;
         this.course = course;
         this.title = title;
         this.dueDate = dueDate;
         this.estimateHours = estimateHours;
+<<<<<<< HEAD
         this.priority = priority;
         this.notes = notes;
         this.status = status;
+=======
+        this.priority = priority != null ? priority : "Low";
+        this.notes = notes != null ? notes : "";
+>>>>>>> 23118552fa6ea3b69cd5560f6eb69532c7f0c309
         this.completed = completed;
         this.points = points;
         this.rewardRedeemed = rewardRedeemed;
         this.penaltyApplied = penaltyApplied;
     }
 
+<<<<<<< HEAD
     public int getId() { 
         return id; 
     }
@@ -420,3 +459,131 @@ public class Assignment {
         }
     }
 }
+=======
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getCourse() {
+        return course;
+    }
+
+    public void setCourse(String course) {
+        this.course = course;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDueDate() {
+        return dueDate;
+    }
+
+    public void setDueDate(String dueDate) {
+        this.dueDate = dueDate;
+    }
+
+    public int getEstimateHours() {
+        return estimateHours;
+    }
+
+    public void setEstimateHours(int estimateHours) {
+        this.estimateHours = estimateHours;
+    }
+
+    public String getPriority() {
+        return priority;
+    }
+
+    public void setPriority(String priority) {
+        this.priority = priority;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
+
+    public boolean isCompleted() {
+        return completed;
+    }
+
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
+    }
+
+    public int getPoints() {
+        return points;
+    }
+
+    public void setPoints(int points) {
+        this.points = points;
+    }
+
+    public boolean isRewardRedeemed() {
+        return rewardRedeemed;
+    }
+
+    public void setRewardRedeemed(boolean rewardRedeemed) {
+        this.rewardRedeemed = rewardRedeemed;
+    }
+
+    public boolean isPenaltyApplied() {
+        return penaltyApplied;
+    }
+
+    public void setPenaltyApplied(boolean penaltyApplied) {
+        this.penaltyApplied = penaltyApplied;
+    }
+
+    public boolean isOverdue() {
+        if (dueDate == null || dueDate.isEmpty()) {
+            return false;
+        }
+        try {
+            LocalDate due = LocalDate.parse(dueDate);
+            return !completed && due.isBefore(LocalDate.now());
+        } catch (DateTimeParseException e) {
+            return false;
+        }
+    }
+
+    public boolean isDueSoon() {
+        if (dueDate == null || dueDate.isEmpty()) {
+            return false;
+        }
+        try {
+            LocalDate due = LocalDate.parse(dueDate);
+            LocalDate now = LocalDate.now();
+            return !completed && !due.isBefore(now) && due.isBefore(now.plusDays(4));
+        } catch (DateTimeParseException e) {
+            return false;
+        }
+    }
+
+    public String getDueStatus() {
+        if (completed) {
+            return "Completed";
+        }
+        if (isOverdue()) {
+            return "Overdue";
+        }
+        if (isDueSoon()) {
+            return "Due soon";
+        }
+        return "On time";
+    }
+}
+>>>>>>> 23118552fa6ea3b69cd5560f6eb69532c7f0c309

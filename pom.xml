@@ -21,6 +21,7 @@
     <dependencies>
 
         <dependency>
+<<<<<<< HEAD
             <groupId>org.apache.tomcat.embed</groupId>
              <artifactId>tomcat-embed-core</artifactId>
              <version>9.0.79</version>
@@ -32,6 +33,8 @@
         </dependency>
 
         <dependency>
+=======
+>>>>>>> 23118552fa6ea3b69cd5560f6eb69532c7f0c309
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>4.0.1</version>
@@ -44,6 +47,7 @@
             <version>8.0.30</version>
         </dependency>
 
+<<<<<<< HEAD
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
@@ -51,10 +55,13 @@
             <scope>test</scope>
         </dependency>
 
+=======
+>>>>>>> 23118552fa6ea3b69cd5560f6eb69532c7f0c309
     </dependencies>
 
     <build>
         <finalName>assignment-planner</finalName>
+<<<<<<< HEAD
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -65,3 +72,8 @@
     </build>
 
 </project>
+=======
+    </build>
+
+</project>
+>>>>>>> 23118552fa6ea3b69cd5560f6eb69532c7f0c309
