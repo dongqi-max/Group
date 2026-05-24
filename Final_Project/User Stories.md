@@ -17,5 +17,7 @@ User stories - Student assignment tracker
 - As a student, I want to view detailed information for each assignment so that I understand what needs to be done.
 - As a student, I want to sort assignments by due date or priority so that I can focus on urgent tasks first.
 - As a student, I want to track the status of my assignments so that I can see what is not started, in progress, or completed.
+- As a student, I want to know when I should work on my assignments so that I can complete them by/prior to the due date.
+- As a student, I want to see how productive I am in completing my assignments.
 
 
