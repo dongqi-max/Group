@@ -62,5 +62,13 @@ Open a web browser and go to:
 http://localhost:8080/assignment-planner/login.jsp
 
 
+Step 6: Register
+Click "Register" button, enter Username and Password, click "Register" to finish
+
+Step 7: login
+Enter exist Username and Password, then click login to login
+The test account is Username: 123     ,    Password: 123
+
+
 
 
