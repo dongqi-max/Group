@@ -110,6 +110,10 @@ Build File:
 3. Build with Maven: `mvn clean package`.
 4. Deploy the generated `target/assignment-planner.war` to Tomcat.
 5. Open `http://localhost:8080/assignment-planner/`.
+6. Click "Register" button, enter Username and Password, click "Register" to finish
+7. Enter exist Username and Password, then click login to login. The test account is Username: 123,Password: 123
+8. 
+
 
 ## UI Enhancements
 - Bootstrap styling for forms, tables, and cards.
