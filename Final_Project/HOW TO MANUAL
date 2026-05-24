@@ -33,12 +33,9 @@ CREATE TABLE assignments (
 );
 
 *** Configure Database Connection ***
-Open: 
+The system uses a Railway cloud MySQL database connection already configured in:
 src/main/java/edu/cs/AssignmentDAO.java
-
-Update:
-private String jdbcUsername = "root";
-private String jdbcPassword = "YOUR_PASSWORD";
+No additional database configuration is required for online deployment.
 
 *** How to Run the System ***
 Step 1: Open Terminal
