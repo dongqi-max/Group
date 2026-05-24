@@ -146,7 +146,15 @@
 %>
 
 <h1>Assignment Checklist</h1>
-
+<p>
+    Welcome,
+    <strong><%= session.getAttribute("username") %></strong>
+    |
+    <a class="btn btn-red btn-small"
+       href="<%= request.getContextPath() %>/logout">
+        Logout
+    </a>
+</p>
 <div class="card">
     <p>
         Keep your tasks organized,
