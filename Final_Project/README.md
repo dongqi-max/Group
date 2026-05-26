@@ -1,3 +1,8 @@
+
+*** Live URL:
+https://assignment-planner.up.railway.app/login.jsp
+
+
 # Software Requirements
 
 (SR-01) As a student, I want to quickly add assignments so that I can capture tasks without wasting time. <br/>
