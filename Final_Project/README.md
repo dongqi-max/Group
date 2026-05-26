@@ -42,7 +42,7 @@
 <br/>
 (SF-10) When the application runs, the system shall display the user’s total points.  <br/>
 <br/>
-(SF-11) When an assignment is added, the system shall notify users before the assignment due date.  <br/>
+(SF-11) The system shall support schedule suggestions before the assignment due date. Full SMS/email notification is a future enhancement.  <br/>
 <br/>
 (SF-12) When an assignment is selected, the system shall allow the user to view the assignment title, course name, due date, and description/notes. 
 
@@ -73,7 +73,7 @@ Architecture Requirements
 
 (AR-13) The system shall support assignment sorting by due date and priority.
 
-(AR-14) The system shall support notification and reminder functionality for upcoming deadlines.
+(AR-14) The system architecture shall allow future notification and reminder expansion.
 
 (AR-15) The system architecture shall allow future expansion such as mobile support, email notifications, and calendar integration.
 
@@ -86,6 +86,9 @@ src/main/java/edu/cs/
 - AssignmentDAO.java
 - AssignmentServlet.java
 - RegisterServlet.java
+- LoginServlet.java
+- LogoutServlet.java
+- EmbeddedTomcatServer.java
 
 src/main/webapp/
 - index.jsp
@@ -112,7 +115,6 @@ Build File:
 5. Open `http://localhost:8080/assignment-planner/`.
 6. Click "Register" button, enter Username and Password, click "Register" to finish
 7. Enter exist Username and Password, then click login to login. The test account is Username: 123,Password: 123
-8. 
 
 
 ## UI Enhancements
